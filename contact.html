@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Purple Square Studios</title>
+    <meta name="description" content="Get in touch with Purple Square Studios. Bug reports, fan mail, business inquiries — we read every message.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Purple Square Studios" class="nav-logo-img">
+                <span class="nav-logo-text">Purple Square<br><small>Studios</small></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="games.html" class="nav-link">Games</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="baba-on-the-road.html" class="nav-btn">Open</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="games.html" class="nav-link">Games</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
+            <a href="baba-on-the-road.html" class="nav-btn">Open</a>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-deco hero-deco-1"></div>
+        <div class="hero-deco hero-deco-2"></div>
+        <div class="hero-deco hero-deco-4"></div>
+        <div class="hero-deco hero-deco-5"></div>
+        <div class="hero-deco hero-deco-6"></div>
+        <div class="hero-deco hero-deco-7"></div>
+        <div class="container">
+            <p class="page-hero-label">SAY HELLO</p>
+            <h1 class="page-hero-title">We'd Love to<br><span class="accent-green">Hear From You</span></h1>
+            <p class="page-hero-subtitle">Bug reports, fan mail, business inquiries, or just a friendly wave — we read every single message.</p>
+        </div>
+    </section>
+
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1350,20 1440,40 L1440,80 L0,80 Z" fill="#FDFAF6"/>
+        </svg>
+    </div>
+
+    <!-- Contact Content -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrap reveal">
+                    <h3>Send a Message</h3>
+                    <p class="contact-form-desc">Fill in the form below and we'll get back to you soon.</p>
+
+                    <!-- Category Selection -->
+                    <div class="contact-categories">
+                        <label class="contact-cat active">
+                            <input type="radio" name="category" value="hello" checked>
+                            <span class="cat-icon">💬</span>
+                            <span class="cat-label">General Hello</span>
+                            <span class="cat-desc">Just want to say hi? We love that.</span>
+                        </label>
+                        <label class="contact-cat">
+                            <input type="radio" name="category" value="bug">
+                            <span class="cat-icon">🐛</span>
+                            <span class="cat-label">Bug Report</span>
+                            <span class="cat-desc">Found something broken? Tell us everything.</span>
+                        </label>
+                        <label class="contact-cat">
+                            <input type="radio" name="category" value="business">
+                            <span class="cat-icon">🏢</span>
+                            <span class="cat-label">Business / Press</span>
+                            <span class="cat-desc">Partnerships, press kits, or collabs.</span>
+                        </label>
+                        <label class="contact-cat">
+                            <input type="radio" name="category" value="fan">
+                            <span class="cat-icon">💌</span>
+                            <span class="cat-label">Fan Mail</span>
+                            <span class="cat-desc">Tell us your favorite moment in our games.</span>
+                        </label>
+                    </div>
+
+                    <form class="contact-form" onsubmit="return false;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" placeholder="Alex Smith" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="you@example.com" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Tell us what's on your mind.." class="form-input form-textarea" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-purple btn-full">Send Message &rarr;</button>
+                    </form>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="contact-sidebar">
+                    <div class="sidebar-card reveal">
+                        <div class="sidebar-card-icon">✉️</div>
+                        <h4>Email Us Directly</h4>
+                        <p class="sidebar-note">We reply within 1-2 days!</p>
+                        <a href="mailto:abhilasha1793@gmail.com" class="sidebar-email">abhilasha1793@gmail.com</a>
+                        <p class="sidebar-status"><span class="status-dot"></span> Usually responds within 24 hours</p>
+                    </div>
+
+                    <div class="sidebar-card reveal">
+                        <h4>Find Us Online</h4>
+                        <div class="sidebar-socials">
+                            <a href="#" class="sidebar-social-row">
+                                <span class="sidebar-social-icon" style="color: #1DA1F2;">𝕏</span>
+                                <div><strong>Twitter / X</strong><br><small>@PurpleSquareStu</small></div>
+                            </a>
+                            <a href="#" class="sidebar-social-row">
+                                <span class="sidebar-social-icon" style="color: #E4405F;">📷</span>
+                                <div><strong>Instagram</strong><br><small>@purplesquarestudios</small></div>
+                            </a>
+                            <a href="#" class="sidebar-social-row">
+                                <span class="sidebar-social-icon" style="color: #FF0000;">▶️</span>
+                                <div><strong>YouTube</strong><br><small>Purple Square Studios</small></div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card sidebar-card-accent reveal">
+                        <div class="sidebar-card-icon">🟪</div>
+                        <h4>Quick Questions?</h4>
+                        <p>Check our community Discord for instant answers from players and the team.</p>
+                        <a href="#" class="sidebar-link">Join Discord &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-accent"></div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo-row">
+                        <img src="assets/logo.png" alt="PS" class="footer-logo">
+                        <span class="footer-name">Purple Square<br><small>Studios</small></span>
+                    </div>
+                    <p class="footer-tagline">We make games that feel like a warm hug on a rainy day. Indie games crafted with love, pixels, and way too much coffee.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="#" class="social-icon" aria-label="Discord"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0c-.164-.393-.406-.874-.618-1.25a.077.077 0 00-.079-.036 19.74 19.74 0 00-4.885 1.515.07.07 0 00-.032.028C.533 9.046-.32 13.58.099 18.058a.08.08 0 00.031.056c2.053 1.508 4.041 2.423 5.993 3.03a.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.042-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 01.079.009c.12.1.245.198.372.292a.077.077 0 01-.006.128 12.3 12.3 0 01-1.873.891.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.029c1.961-.607 3.95-1.522 6.002-3.029a.077.077 0 00.031-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.331c-1.183 0-2.157-1.086-2.157-2.419s.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42 0 1.332-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.086-2.157-2.419s.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42 0 1.332-.946 2.418-2.157 2.418z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col"><h4>GAMES</h4><a href="games.html">All Games</a><a href="#">Coming Soon</a></div>
+                <div class="footer-col"><h4>STUDIO</h4><a href="about.html">About Us</a><a href="#">Press Kit</a></div>
+                <div class="footer-col"><h4>CONNECT</h4><a href="#">Newsletter</a><a href="contact.html">Contact</a></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Purple Square Studios. All rights reserved.</p>
+                <div class="footer-bottom-links"><a href="privacy-policy.html">Privacy Policy</a><a href="#">Terms of Use</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
