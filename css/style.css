@@ -164,6 +164,43 @@ a:hover { color: var(--purple-dark); }
 }
 .nav-btn:hover { background: var(--green-light); color: var(--purple-dark); transform: translateY(-1px); }
 
+.nav-coming-soon {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dark);
+    background: var(--green);
+    padding: 7px 16px;
+    border-radius: 8px;
+    margin-left: 4px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    animation: pulseGlow 2.5s ease-in-out infinite;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+.nav-coming-soon::before {
+    content: '🔥';
+    margin-right: 4px;
+}
+.nav-coming-soon::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-20deg);
+    animation: btnShine 3s ease-in-out infinite;
+}
+.nav-coming-soon:hover {
+    background: var(--green-light);
+    color: var(--purple-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(143, 228, 6, 0.4);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -1344,6 +1381,124 @@ a:hover { color: var(--purple-dark); }
     transform: translateY(24px);
 }
 
+/* --- Waitlist Section --- */
+.waitlist-section {
+    background: var(--bg-white);
+}
+
+.waitlist-card {
+    background: var(--purple);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    padding: 0;
+}
+
+.waitlist-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    align-items: center;
+}
+
+.waitlist-content {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.waitlist-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 40px);
+    color: white;
+    line-height: 1.1;
+}
+
+.waitlist-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+    max-width: 460px;
+}
+
+.waitlist-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 4px 0;
+}
+
+.waitlist-perk {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+}
+
+.waitlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin-top: 8px;
+}
+
+.waitlist-input {
+    padding: 14px 18px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: var(--font-body);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transition: border-color var(--transition), background var(--transition);
+}
+.waitlist-input::placeholder { color: rgba(255,255,255,0.4); }
+.waitlist-input:focus {
+    outline: none;
+    border-color: var(--green);
+    background: rgba(255,255,255,0.15);
+}
+
+.waitlist-count {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+}
+
+.waitlist-visual {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px 24px 0;
+    overflow: hidden;
+}
+
+.waitlist-baba {
+    max-height: 380px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+    animation: bounceSubtle 3s ease-in-out infinite;
+}
+
+/* Waitlist success state */
+.waitlist-success {
+    text-align: center;
+    padding: 24px;
+    background: rgba(143, 228, 6, 0.15);
+    border: 2px solid rgba(143, 228, 6, 0.3);
+    border-radius: 12px;
+    max-width: 400px;
+}
+.waitlist-success h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--green);
+    margin-bottom: 8px;
+}
+.waitlist-success p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+}
+
 /* --- Game Detail Page (baba-on-the-road.html) --- */
 .game-hero {
     background: var(--purple);
@@ -1697,6 +1852,10 @@ a:hover { color: var(--purple-dark); }
     .game-card-image { min-height: 220px; }
 
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .waitlist-inner { grid-template-columns: 1fr; }
+    .waitlist-visual { display: none; }
+    .waitlist-content { padding: 32px 24px; }
 
     .game-hero-grid { grid-template-columns: 1fr; text-align: center; }
     .game-hero-logo { margin: 0 auto; max-width: 280px; }

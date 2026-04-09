@@ -25,7 +25,7 @@
                 <a href="games.html" class="nav-link active">Games</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="contact.html" class="nav-link">Contact</a>
-                <a href="baba-on-the-road.html" class="nav-btn">Play Now</a>
+                <a href="baba-on-the-road.html" class="nav-coming-soon">Coming Soon</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -36,7 +36,7 @@
             <a href="games.html" class="nav-link active">Games</a>
             <a href="about.html" class="nav-link">About</a>
             <a href="contact.html" class="nav-link">Contact</a>
-            <a href="baba-on-the-road.html" class="nav-btn">Play Now</a>
+            <a href="baba-on-the-road.html" class="nav-coming-soon">Coming Soon</a>
         </div>
     </nav>
 
@@ -65,8 +65,8 @@
                         <span class="game-info-chip">🆓 Free to Play</span>
                     </div>
                     <div class="game-hero-cta">
-                        <a href="#" class="btn btn-green btn-lg">Download on Google Play &rarr;</a>
-                        <span class="coming-soon-note">Coming Soon to App Store</span>
+                        <a href="#waitlist" class="btn btn-green btn-lg">Join the Waitlist &rarr;</a>
+                        <span class="coming-soon-note">Launching Soon on Google Play & App Store</span>
                     </div>
                 </div>
                 <div class="game-hero-visual">
@@ -290,14 +290,50 @@
         </div>
     </section>
 
-    <!-- ========== DOWNLOAD CTA ========== -->
+    <!-- ========== JOIN THE WAITLIST ========== -->
+    <section class="section waitlist-section" id="waitlist">
+        <div class="container">
+            <div class="waitlist-card">
+                <div class="waitlist-inner">
+                    <div class="waitlist-content">
+                        <span class="badge badge-green">🔥 Coming Soon</span>
+                        <h2 class="waitlist-title">Join the Waitlist</h2>
+                        <p class="waitlist-desc">
+                            Be the first to play Baba On The Go — India when it launches.
+                            Get exclusive early access, behind-the-scenes devlogs, and a
+                            special in-game reward for early supporters.
+                        </p>
+                        <div class="waitlist-perks">
+                            <div class="waitlist-perk">✅ Early access before public launch</div>
+                            <div class="waitlist-perk">✅ Exclusive in-game reward</div>
+                            <div class="waitlist-perk">✅ Dev updates & sneak peeks</div>
+                            <div class="waitlist-perk">✅ Zero spam — we promise</div>
+                        </div>
+                        <form class="waitlist-form" id="waitlistForm" onsubmit="return handleWaitlist(event)">
+                            <input type="text" name="name" placeholder="Your Name" class="waitlist-input" required>
+                            <input type="email" name="email" placeholder="your@email.com" class="waitlist-input" required>
+                            <button type="submit" class="btn btn-green btn-lg btn-full" id="waitlistBtn">
+                                Join the Waitlist &rarr;
+                            </button>
+                        </form>
+                        <p class="waitlist-count">🎮 Be among the first to play!</p>
+                    </div>
+                    <div class="waitlist-visual">
+                        <img src="assets/baba-character.png" alt="Baba" class="waitlist-baba">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BOTTOM CTA ========== -->
     <section class="section cta-section">
         <div class="container text-center">
             <img src="assets/game-logo.png" alt="Baba On The Go" class="cta-game-logo">
             <h2 class="section-title">Ready to Hit <span class="accent-green">the Road?</span></h2>
-            <p>Download Baba On The Go — India and start your journey across the most colorful country on Earth.</p>
+            <p>Join the waitlist and be the first to explore India with Baba.</p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-green btn-lg">Download Free &rarr;</a>
+                <a href="#waitlist" class="btn btn-green btn-lg">Join the Waitlist &rarr;</a>
                 <a href="games.html" class="btn btn-outline-white">All Games</a>
             </div>
         </div>
@@ -335,5 +371,29 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    // Waitlist form handler
+    // TODO: Replace with Google Form submission URL when ready
+    function handleWaitlist(e) {
+        e.preventDefault();
+        const form = document.getElementById('waitlistForm');
+        const name = form.querySelector('input[name="name"]').value;
+        const email = form.querySelector('input[name="email"]').value;
+
+        // Store locally (replace with Google Form fetch later)
+        const waitlist = JSON.parse(localStorage.getItem('ps_waitlist') || '[]');
+        waitlist.push({ name, email, date: new Date().toISOString() });
+        localStorage.setItem('ps_waitlist', JSON.stringify(waitlist));
+
+        // Show success
+        form.outerHTML = `
+            <div class="waitlist-success">
+                <h3>You're In! 🎉</h3>
+                <p>Thanks ${name}! We'll notify you at <strong>${email}</strong> when Baba On The Go launches. Get ready for an adventure!</p>
+            </div>
+        `;
+        return false;
+    }
+    </script>
 </body>
 </html>
