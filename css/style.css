@@ -1624,7 +1624,7 @@ a:hover { color: var(--purple-dark); }
 
 /* Video section */
 .video-wrap {
-    max-width: 700px;
+    max-width: 360px;
     margin: 0 auto;
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -1635,6 +1635,21 @@ a:hover { color: var(--purple-dark); }
 .game-video {
     width: 100%;
     display: block;
+}
+
+.game-video-yt {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 600px;
+    display: block;
+    border-radius: var(--radius);
+}
+
+.phone-video {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
 }
 
 /* Story section */
