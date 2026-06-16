@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buff Pookie Gym — Free Workout Tracker | Purple Square Studios</title>
+    <meta name="description" content="Buff Pookie Gym — a free workout tracker with XP, streaks, cycle tracking, and zero data collection. Your data stays on your device, always.">
+    <meta name="theme-color" content="#7519AE">
+
+    <meta property="og:title" content="Buff Pookie Gym — Free Workout Tracker">
+    <meta property="og:description" content="Log lifts, earn XP, level up. Free forever. No ads. No data sharing. Built-in cycle tracking.">
+    <meta property="og:image" content="assets/buff-pookie/L01-Hero.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://purplesquarestudios.com/buff-pookie-gym.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=DM+Sans:wght@300;400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/buff-pookie/icon.png" type="image/png">
+
+    <style>
+        /* ===== Buff Pookie Gym page overrides ===== */
+        .bp-hero {
+            position: relative;
+            background: linear-gradient(135deg, #1A0E35 0%, #2A1850 40%, #0D0620 100%);
+            padding: calc(var(--nav-height) + 60px) 24px 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .bp-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(109,63,214,0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(255,149,0,0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .bp-hero-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+        .bp-icon { width: 110px; height: 110px; border-radius: 26px; box-shadow: 0 8px 40px rgba(109,63,214,0.4); margin: 0 auto 24px; }
+        .bp-hero h1 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(2rem, 5.5vw, 3.2rem); color: #fff; line-height: 1.15; margin-bottom: 12px; }
+        .bp-hero h1 .orange { color: #FF9500; }
+        .bp-hero .tagline { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 500; color: #C4B5E0; margin-bottom: 28px; }
+
+        .bp-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .bp-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            color: #F5F0FF; padding: 8px 18px; border-radius: 99px;
+            font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem;
+        }
+        .bp-badge .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .bp-badge .dot-green { background: #8FE406; }
+        .bp-badge .dot-pink { background: #F472B6; }
+        .bp-badge .dot-blue { background: #60A5FA; }
+        .bp-badge .dot-orange { background: #FF9500; }
+
+        .bp-stores { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .bp-store-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #fff; color: #1A0E35; text-decoration: none;
+            padding: 12px 28px; border-radius: 14px;
+            font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .bp-store-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(109,63,214,0.3); color: #1A0E35; }
+        .bp-store-btn svg { width: 22px; height: 22px; }
+
+        .bp-hero-banner { width: 100%; max-width: 800px; border-radius: 20px; margin: 0 auto; box-shadow: 0 12px 60px rgba(0,0,0,0.4); }
+
+        /* Promise strip */
+        .bp-promises {
+            background: var(--bg-cream);
+            padding: 48px 24px;
+        }
+        .bp-promises-inner {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px;
+            text-align: center;
+        }
+        .bp-promise { }
+        .bp-promise .icon { font-size: 2rem; margin-bottom: 8px; }
+        .bp-promise h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-dark); margin-bottom: 4px; }
+        .bp-promise p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* Screenshots carousel */
+        .bp-screens {
+            padding: 64px 0;
+            background: var(--bg-white);
+        }
+        .bp-screens h2 {
+            font-family: var(--font-display);
+            font-size: clamp(24px, 4vw, 36px);
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 36px;
+            padding: 0 24px;
+        }
+        .bp-carousel {
+            display: flex; gap: 20px;
+            overflow-x: auto; scroll-snap-type: x mandatory;
+            padding: 0 24px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .bp-carousel::-webkit-scrollbar { display: none; }
+        .bp-card {
+            flex: 0 0 260px; scroll-snap-align: center;
+            border-radius: 22px; overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s;
+        }
+        .bp-card:hover { transform: scale(1.03); }
+        .bp-card img { width: 100%; height: auto; display: block; }
+
+        /* Features */
+        .bp-features {
+            padding: 64px 24px;
+            background: var(--bg-cream);
+        }
+        .bp-features h2 {
+            font-family: var(--font-display);
+            font-size: clamp(24px, 4vw, 36px);
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .bp-grid {
+            max-width: 960px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px;
+        }
+        .bp-tile {
+            background: #fff; border-radius: var(--radius-lg); padding: 28px;
+            box-shadow: var(--shadow); transition: transform 0.2s;
+        }
+        .bp-tile:hover { transform: translateY(-4px); }
+        .bp-tile .tile-icon { font-size: 1.8rem; margin-bottom: 10px; }
+        .bp-tile h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--text-dark); margin-bottom: 6px; }
+        .bp-tile p { font-size: 0.88rem; color: var(--text-body); line-height: 1.55; }
+        .bp-tile.highlight { background: linear-gradient(135deg, #F9E8FF 0%, #FFF0F7 100%); border: 2px solid #E8B4F8; }
+
+        /* CTA */
+        .bp-cta {
+            padding: 64px 24px;
+            text-align: center;
+            background: linear-gradient(135deg, #2A1850 0%, #1A0E35 100%);
+        }
+        .bp-cta h2 { font-family: 'Nunito', sans-serif; font-weight: 900; font-size: clamp(1.6rem, 4vw, 2.4rem); color: #fff; margin-bottom: 8px; }
+        .bp-cta p { font-family: 'DM Sans', sans-serif; font-size: 1rem; color: #C4B5E0; margin-bottom: 28px; }
+
+        @media (max-width: 640px) {
+            .bp-card { flex: 0 0 220px; }
+            .bp-icon { width: 88px; height: 88px; border-radius: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/logo.png" alt="Purple Square Studios" class="nav-logo-img">
+                <span class="nav-logo-text">Purple Square<br><small>Studios</small></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="games.html" class="nav-link active">Games</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="baba-on-the-road.html" class="nav-coming-soon">Coming Soon</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="games.html" class="nav-link active">Games</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="baba-on-the-road.html" class="nav-coming-soon">Coming Soon</a>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="bp-hero">
+        <div class="bp-hero-inner">
+            <img src="assets/buff-pookie/icon.png" alt="Buff Pookie Gym" class="bp-icon">
+            <h1>Your <span class="orange">buff</span> little gym buddy.</h1>
+            <p class="tagline">Log sets, chase PRs, level up &mdash; with a crew that cheers you on.</p>
+
+            <div class="bp-badges">
+                <span class="bp-badge"><span class="dot dot-green"></span> 100% Free</span>
+                <span class="bp-badge"><span class="dot dot-orange"></span> Zero Ads</span>
+                <span class="bp-badge"><span class="dot dot-pink"></span> Cycle Tracking</span>
+                <span class="bp-badge"><span class="dot dot-blue"></span> No Data Shared</span>
+            </div>
+
+            <div class="bp-stores">
+                <a href="#" class="bp-store-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33c.576.334.576 1.17 0 1.504L17.698 13.67l-2.53-2.53 2.53-2.53zM5.864 3.455L16.8 9.788l-2.302 2.302-8.635-8.635z"/></svg>
+                    Google Play
+                </a>
+                <a href="#" class="bp-store-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    App Store
+                </a>
+            </div>
+        </div>
+        <img src="assets/buff-pookie/L01-Hero.png" alt="Buff Pookie Gym" class="bp-hero-banner">
+    </section>
+
+    <!-- ========== PROMISE STRIP ========== -->
+    <section class="bp-promises">
+        <div class="bp-promises-inner">
+            <div class="bp-promise">
+                <div class="icon">&#128274;</div>
+                <h3>Your Data Stays Yours</h3>
+                <p>Everything lives on your device. No accounts, no servers, no tracking. We never see your data.</p>
+            </div>
+            <div class="bp-promise">
+                <div class="icon">&#127801;</div>
+                <h3>Built for Women Too</h3>
+                <p>Cycle-aware training built in. Track your period, see your phase, and adapt your workouts accordingly.</p>
+            </div>
+            <div class="bp-promise">
+                <div class="icon">&#128176;</div>
+                <h3>Free Forever, No Ads</h3>
+                <p>No paywalls, no subscriptions, no ads interrupting your sets. Just a clean, fast workout tracker.</p>
+            </div>
+            <div class="bp-promise">
+                <div class="icon">&#127918;</div>
+                <h3>Gamified Gains</h3>
+                <p>Earn XP, level up, unlock badges, and keep your streak alive. The gym has never been this fun.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SCREENSHOTS ========== -->
+    <section class="bp-screens">
+        <h2>See It In Action</h2>
+        <div class="bp-carousel">
+            <div class="bp-card"><img src="assets/buff-pookie/P01-Hero.png" alt="Workout tracking" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P05-PRs-Gamification.png" alt="PRs and XP" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P02-Cycle-Tracking.png" alt="Cycle tracking" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P04-Rest-Timer.png" alt="Rest timer" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P06-Share-Gains.png" alt="Share your gains" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P07-Progress-Charts.png" alt="Progress charts" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P08-Profile-Badges.png" alt="Badges" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P09-Routine-Builder.png" alt="Routines" loading="lazy"></div>
+            <div class="bp-card"><img src="assets/buff-pookie/P03-Water-Sleep.png" alt="Water and sleep" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="bp-features">
+        <h2>Everything You Need</h2>
+        <div class="bp-grid">
+            <div class="bp-tile highlight">
+                <div class="tile-icon">&#127801;</div>
+                <h3>Cycle-Aware Training</h3>
+                <p>Built-in period and cycle tracking. See which phase you're in and how it affects your energy and recovery. No separate app needed.</p>
+            </div>
+            <div class="bp-tile">
+                <div class="tile-icon">&#9889;</div>
+                <h3>XP &amp; Leveling</h3>
+                <p>Earn XP for every set, PR, and workout. Level up from Rookie to legend status across 10 ranks.</p>
+            </div>
+            <div class="bp-tile">
+                <div class="tile-icon">&#128293;</div>
+                <h3>Weekly Streaks</h3>
+                <p>Keep the flame alive with a streak system that respects rest days. Gentle nudges, not guilt trips.</p>
+            </div>
+            <div class="bp-tile">
+                <div class="tile-icon">&#127946;</div>
+                <h3>Smart Tracking</h3>
+                <p>Fast set logging with last-used weights pre-filled. 45+ exercises, custom ones, rest timer with pause.</p>
+            </div>
+            <div class="bp-tile">
+                <div class="tile-icon">&#128200;</div>
+                <h3>Progress Charts</h3>
+                <p>Automatic PR detection, volume charts, exercise history, and a heatmap that shows your consistency.</p>
+            </div>
+            <div class="bp-tile">
+                <div class="tile-icon">&#128274;</div>
+                <h3>100% Private</h3>
+                <p>Works fully offline. No account required. No sign-up walls. Export everything as JSON anytime. Your data never leaves your phone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="bp-cta">
+        <h2>Ready to get buff, pookie?</h2>
+        <p>Free to download. No ads. No accounts. No data sharing. Just gains.</p>
+        <div class="bp-stores">
+            <a href="#" class="bp-store-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33c.576.334.576 1.17 0 1.504L17.698 13.67l-2.53-2.53 2.53-2.53zM5.864 3.455L16.8 9.788l-2.302 2.302-8.635-8.635z"/></svg>
+                Google Play
+            </a>
+            <a href="#" class="bp-store-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                App Store
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/logo.png" alt="Purple Square Studios" style="width:36px;height:36px;border-radius:8px;">
+                        <span>Purple Square Studios</span>
+                    </div>
+                    <p class="footer-desc">We make cozy, colorful apps.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="games.html">Games</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="https://abiee17.github.io/buff-pookie-gym-site/privacy.html">Buff Pookie Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Purple Square Studios. Made with &#128156; in India.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
